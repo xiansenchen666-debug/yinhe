@@ -6,40 +6,133 @@
     <title data-i18n="tut_title">使用教程</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .tut-step {
-            background: rgba(26,43,60,0.02);
+        .tutorial-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .hero-guide {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 28px;
+            margin-bottom: 36px;
+        }
+        .hero-guide h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: var(--brand-primary);
+        }
+        .hero-guide p {
+            color: var(--text-muted);
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+        .section-block {
+            margin-top: 30px;
+        }
+        .guide-cards {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+        .guide-card {
+            background: var(--bg-panel);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
-            padding: 30px; margin-bottom: 20px;
+            padding: 24px;
+            backdrop-filter: var(--blur-md);
         }
-        .tut-step h3 { font-size: 1.3rem; color: var(--brand-primary); margin-bottom: 15px; }
-        .tut-step p { color: var(--text-muted); line-height: 1.8; }
-        .tutorial-grid {
+        .guide-card .num {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(197, 160, 89, 0.12);
+            color: var(--brand-accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .guide-card h3 {
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+            color: var(--brand-primary);
+        }
+        .guide-card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 0.94rem;
+        }
+        .platform-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 28px;
-            margin-top: 32px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 24px;
         }
-        .check-list {
+        .platform-card {
+            background: var(--bg-panel-solid);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+        }
+        .platform-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 14px;
+            color: var(--brand-primary);
+        }
+        .platform-card ul {
+            padding-left: 18px;
+        }
+        .platform-card li {
+            color: var(--text-muted);
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .tips-list {
             display: grid;
             gap: 14px;
         }
-        .check-item {
+        .tip-item {
             padding: 18px 20px;
             border: 1px solid var(--border-light);
             border-radius: 14px;
             background: var(--bg-panel-solid);
             color: var(--text-muted);
-            line-height: 1.7;
+            line-height: 1.8;
         }
-        .check-item strong {
+        .tip-item strong {
             color: var(--text-main);
+        }
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+        }
+        .config-table th,
+        .config-table td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+            text-align: left;
+        }
+        .config-table th {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.92rem;
+        }
+        .config-table td {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 0.94rem;
         }
         .faq-box {
             margin-top: 28px;
         }
         .faq-row {
-            padding: 20px 0;
+            padding: 22px 0;
             border-bottom: 1px solid var(--border-light);
         }
         .faq-row:last-child {
@@ -54,8 +147,21 @@
             color: var(--text-muted);
             line-height: 1.8;
         }
-        @media (max-width: 900px) {
-            .tutorial-grid {
+        .tutorial-note {
+            padding: 22px 24px;
+            border-radius: var(--radius-md);
+            background: rgba(197, 160, 89, 0.08);
+            border: 1px solid rgba(197, 160, 89, 0.16);
+            color: var(--text-muted);
+            line-height: 1.85;
+        }
+        .tutorial-note strong {
+            color: var(--brand-primary);
+        }
+        @media (max-width: 1100px) {
+            .hero-guide,
+            .platform-grid,
+            .guide-cards {
                 grid-template-columns: 1fr;
             }
         }
@@ -81,56 +187,182 @@
             </div>
         </div>
     </nav>
-    <div class="main-content" style="margin-left: 0; max-width: 1100px; margin: 0 auto; padding-top: 120px;">
-        <h1 class="page-title" style="text-align: center; margin-bottom: 40px;" data-i18n="tut_title">平台使用教程</h1>
-        
-        <div class="tutorial-grid">
-            <div class="glass-panel">
-                <div class="tut-step">
-                    <h3 data-i18n="tut_step_1">第一步：在交易所创建并获取 API Key</h3>
-                    <p>登录您的交易所账户，进入 API 管理页面，新建 API，并仅勾选“读取权限”和“现货/合约交易权限”。请勿开启提现权限，这是标准的安全配置。</p>
-                </div>
-                <div class="tut-step">
-                    <h3 data-i18n="tut_step_2">第二步：在控制台绑定 API</h3>
-                    <p>进入银河量化控制台，点击“添加交易所 API”，选择交易所类型后粘贴 Key 与 Secret。平台使用加密存储方案，避免明文暴露。</p>
-                </div>
-                <div class="tut-step">
-                    <h3 data-i18n="tut_step_3">第三步：选择交易员并设置风控</h3>
-                    <p>根据收益曲线、回撤表现、胜率与交易频率选择适合您的交易员，同时设置单笔仓位、最大回撤、止损阈值，确认后即可启动跟单。</p>
-                </div>
-                <div class="tut-step">
-                    <h3>第四步：持续监控与优化</h3>
-                    <p>建议您每日查看控制台中的最近信号、收益波动和策略表现。若账户规模扩大，可升级订阅计划或开通额外账户席位，实现多账户分仓跟单。</p>
-                </div>
-            </div>
-
-            <div>
+    <div class="main-content" style="margin-left: 0; max-width: 100%; padding-top: 128px;">
+        <div class="tutorial-wrap">
+            <section class="hero-guide">
                 <div class="glass-panel">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 18px; color: var(--brand-primary);">开通前检查清单</h3>
-                    <div class="check-list">
-                        <div class="check-item"><strong>确认交易所账户正常</strong><br>确保账户已完成身份验证，并具备可用资金。</div>
-                        <div class="check-item"><strong>确认 API 权限正确</strong><br>只保留读取和交易权限，关闭提现权限。</div>
-                        <div class="check-item"><strong>确认网络环境稳定</strong><br>避免本地频繁切换网络，以便及时完成风控确认与通知接收。</div>
-                        <div class="check-item"><strong>确认风险承受能力</strong><br>根据自身资金规模设置跟单金额和最大亏损上限。</div>
+                    <h1 data-i18n="tut_title">银河量化完整使用教程</h1>
+                    <p>我已经基于您 `教程` 文件夹中的文档内容重新整理了教程页，把原来的简版说明升级为官网版完整教程。现在这个页面不仅告诉用户怎么开通，还把 API 获取、跨平台绑定、参数配置、风险控制和常见问题都整合进来了。</p>
+                    <p style="margin-top: 16px;">银河系统仅获取交易权限，不接触用户资金；所有资金始终保留在用户自己的交易所账户中。平台支持币安、欧易、Gate.io、Bitget 等主流交易所跨平台跟单。</p>
+                </div>
+                <div class="glass-panel">
+                    <h3 style="font-size: 1.18rem; margin-bottom: 18px; color: var(--brand-primary);">教程总览</h3>
+                    <div class="tips-list">
+                        <div class="tip-item"><strong>支持功能</strong><br>场外跟单已上线，银河官方量化策略也将逐步开放。</div>
+                        <div class="tip-item"><strong>核心优势</strong><br>不限制人数、不设最低门槛、不抽取利润分成，用户收益尽量完整保留。</div>
+                        <div class="tip-item"><strong>适用对象</strong><br>新手可按四步快速上手，专业用户可进一步配置风控、倍率和跟单触发规则。</div>
                     </div>
                 </div>
+            </section>
 
+            <section class="section-block">
+                <div class="section-label">四步开通流程</div>
+                <div class="guide-cards">
+                    <div class="guide-card">
+                        <div class="num">01</div>
+                        <h3>申请 API Key</h3>
+                        <p>进入您使用的交易所 API 管理页面，创建新的 API Key，仅开启读取和交易权限，不开启提现权限。</p>
+                    </div>
+                    <div class="guide-card">
+                        <div class="num">02</div>
+                        <h3>绑定银河账户</h3>
+                        <p>进入银河量化控制台，添加交易所 API，填写 Key、Secret 以及交易所要求的密码短语等信息。</p>
+                    </div>
+                    <div class="guide-card">
+                        <div class="num">03</div>
+                        <h3>选择交易员</h3>
+                        <p>可以在交易员广场选择平台已上线的交易员，也可以在自选跟单中选择外部公开带单员。</p>
+                    </div>
+                    <div class="guide-card">
+                        <div class="num">04</div>
+                        <h3>配置参数并启动</h3>
+                        <p>设置跟单倍率、资金管理模式、止盈止损和风控阈值后，启动跟单并持续观察表现。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-label">交易所 API 指引</div>
+                <div class="platform-grid">
+                    <div class="platform-card">
+                        <h3>币安 Binance</h3>
+                        <ul>
+                            <li>支持电脑端和手机端创建 API。</li>
+                            <li>普通跟单用户使用“合约交易 API-Key”。</li>
+                            <li>带单用户使用“带单账户 API-Key”，两类 Key 不可混用。</li>
+                            <li>创建完成后，务必开启合约权限，并在仓位模式中打开双向持仓。</li>
+                        </ul>
+                    </div>
+                    <div class="platform-card">
+                        <h3>欧易 OKX</h3>
+                        <ul>
+                            <li>创建 API 时用途选择“API 交易”，权限勾选“交易”。</li>
+                            <li>除 API Key 和 Secret 外，还必须妥善保存密码短语。</li>
+                            <li>进入合约页面后，同样需要打开双向持仓模式。</li>
+                        </ul>
+                    </div>
+                    <div class="platform-card">
+                        <h3>Gate.io 芝麻开门</h3>
+                        <ul>
+                            <li>新注册账号需先手动交易一笔，创建合约账户后再申请 API。</li>
+                            <li>永续合约设置为读写，钱包、返佣、Account 建议只读。</li>
+                            <li>跟单前建议再次确认持仓模式是否为双向持仓。</li>
+                        </ul>
+                    </div>
+                    <div class="platform-card">
+                        <h3>Bitget</h3>
+                        <ul>
+                            <li>同样存在普通跟单 Key 与带单账户 Key 的区别，请按用途区分。</li>
+                            <li>创建 API 后需记录 API Key、SecretKey 和口令。</li>
+                            <li>在交易设置里完成持仓模式与权限复核后，再进入银河绑定。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-label">参数配置指南</div>
+                <div class="glass-panel">
+                    <div class="tutorial-note">
+                        <strong>重点说明：</strong> 根据您 `跟单系统配置指南_v2.md` 的内容，我把最核心、最影响收益与风险的参数浓缩成了下表。用户可以先看这里建立完整认知，再进入控制台逐项配置。
+                    </div>
+                    <table class="config-table">
+                        <thead>
+                            <tr>
+                                <th>配置模块</th>
+                                <th>说明</th>
+                                <th>建议</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>资金管理模式</td>
+                                <td>支持固定金额、全仓跟单、复利滚动三种模式。固定金额最稳定，全仓模式最激进，复利模式更接近真实滚仓。</td>
+                                <td>新手优先选择固定金额或低倍率复利滚动。</td>
+                            </tr>
+                            <tr>
+                                <td>跟单倍率</td>
+                                <td>决定您跟随交易员仓位比例的大小，倍率越高，收益和风险都被同步放大。</td>
+                                <td>建议从 `0.5` 或 `1` 开始，不建议一上来放大到 2 倍以上。</td>
+                            </tr>
+                            <tr>
+                                <td>启动跟单模式</td>
+                                <td>可选择不复制旧仓、仅复制浮亏持仓或复制所有持仓。不同模式决定您启动时是否跟入交易员现有仓位。</td>
+                                <td>默认推荐“不复制”，逻辑更清晰，风险更可控。</td>
+                            </tr>
+                            <tr>
+                                <td>开仓/加仓触发</td>
+                                <td>支持市价、持仓均价限价、加仓价限价，还可设置价格优于交易员的百分比触发。</td>
+                                <td>追求成交成功率用市价，追求成本控制再用限价。</td>
+                            </tr>
+                            <tr>
+                                <td>止盈止损与亏损阈值</td>
+                                <td>可设置持仓止盈、持仓止损、跟单亏损阈值和安全垫亏损值，超限后自动减仓、暂停或停止跟单。</td>
+                                <td>强烈建议每个交易员都配置止损与总亏损阈值。</td>
+                            </tr>
+                            <tr>
+                                <td>高级风控</td>
+                                <td>支持异常高频交易、交易员本金监控、交易员持仓超大杠杆、用户持仓超大杠杆等监测场景。</td>
+                                <td>建议至少启用“仅通知”或“暂停跟单并平仓”级别的响应。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-label">开通前检查清单</div>
+                <div class="guide-cards" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
+                    <div class="guide-card">
+                        <h3>账户状态正常</h3>
+                        <p>确认交易所账户完成实名，账户中有可用资金，并已开通合约相关功能。</p>
+                    </div>
+                    <div class="guide-card">
+                        <h3>权限配置正确</h3>
+                        <p>API 只保留读取和交易权限，严禁开启提现权限。</p>
+                    </div>
+                    <div class="guide-card">
+                        <h3>仓位模式正确</h3>
+                        <p>按照教程要求，把合约账户的仓位模式切换到双向持仓。</p>
+                    </div>
+                    <div class="guide-card">
+                        <h3>风控逻辑清晰</h3>
+                        <p>先设定单交易员跟单资金、最大亏损、倍率和止损条件，再启动策略。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
                 <div class="glass-panel faq-box">
                     <h3 style="font-size: 1.2rem; margin-bottom: 4px; color: var(--brand-primary);">常见问题</h3>
                     <div class="faq-row">
-                        <h4>绑定 API 后可以提现吗？</h4>
-                        <p>不能。平台只建议您开启读取和交易权限，提现权限始终保持关闭状态，因此平台无法转出您的资产。</p>
+                        <h4>绑定 API 后平台能提现吗？</h4>
+                        <p>不能。银河系统只需要读取和交易权限，不接触用户资产，资金始终保留在用户自己的交易所账户中。</p>
                     </div>
                     <div class="faq-row">
-                        <h4>可以同时跟多个交易员吗？</h4>
-                        <p>可以。如果您需要多策略并行，可通过额外账户席位或多个子账户实现分仓运行。</p>
+                        <h4>可以同时绑定多个交易所或多个账户吗？</h4>
+                        <p>可以。您可以通过额外账户席位支持多平台、多子账户运行，适合做资金分散和策略隔离。</p>
                     </div>
                     <div class="faq-row">
-                        <h4>新手适合选择什么套餐？</h4>
-                        <p>建议从月付或季付开始，熟悉整套跟单流程后，再根据收益目标升级半年或年度旗舰版。</p>
+                        <h4>公开持仓和隐藏持仓跟单有区别吗？</h4>
+                        <p>有。根据您教程资料中的说明，部分平台对隐藏持仓会存在开仓延迟，而公开持仓通常能实现更低延迟甚至无延迟跟单。</p>
+                    </div>
+                    <div class="faq-row">
+                        <h4>新手第一次应该怎么配置？</h4>
+                        <p>建议从固定金额、小倍率、不复制旧仓开始，先运行 1 到 2 周观察策略风格，再逐步升级到更高阶的配置方案。</p>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
     <script src="i18n.js"></script>
