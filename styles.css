@@ -2,22 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Noto+Sans+SC:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-    --bg-base: #030712; /* 极度深邃黑 */
-    --bg-panel: rgba(15, 23, 42, 0.6); /* 毛玻璃面板底色 */
-    --bg-card-hover: rgba(30, 41, 59, 0.8);
+    --bg-base: #01130e; /* 极度深邃深青黑 */
+    --bg-panel: rgba(4, 30, 24, 0.6); /* 毛玻璃面板底色 */
+    --bg-card-hover: rgba(8, 48, 38, 0.8);
     
-    --brand-primary: #14b8a6; /* 高级翠绿 */
-    --brand-secondary: #0ea5e9; /* 科技蓝 */
-    --brand-accent: #f59e0b; /* 尊贵金 */
+    --brand-primary: #38B5A0; /* Logo 核心青绿 */
+    --brand-secondary: #208775; /* 较深的青绿过渡色 */
+    --brand-accent: #FFDE59; /* 尊贵金 */
     
     --brand-gradient: linear-gradient(135deg, var(--brand-secondary), var(--brand-primary));
-    --gold-gradient: linear-gradient(135deg, #fbbf24, #d97706);
+    --gold-gradient: linear-gradient(135deg, #FFDE59, #d97706);
     
     --text-main: #f8fafc;
-    --text-muted: #94a3b8;
+    --text-muted: #85a9a1;
     
-    --border-light: rgba(255, 255, 255, 0.08);
-    --border-highlight: rgba(20, 184, 166, 0.3);
+    --border-light: rgba(56, 181, 160, 0.15);
+    --border-highlight: rgba(56, 181, 160, 0.4);
     
     --blur-xl: blur(24px);
     --blur-md: blur(12px);
@@ -25,7 +25,7 @@
     --radius-lg: 24px;
     --radius-md: 16px;
     
-    --shadow-neon: 0 0 20px rgba(20, 184, 166, 0.2), 0 0 40px rgba(14, 165, 233, 0.1);
+    --shadow-neon: 0 0 20px rgba(56, 181, 160, 0.3), 0 0 40px rgba(32, 135, 117, 0.2);
 }
 
 * {
@@ -49,8 +49,8 @@ body {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     background-image: 
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(56, 181, 160, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 181, 160, 0.04) 1px, transparent 1px);
     background-size: 50px 50px;
     z-index: -2;
     pointer-events: none;
@@ -67,8 +67,8 @@ body {
     opacity: 0.5;
     animation: floatOrb 20s infinite ease-in-out alternate;
 }
-.orb-1 { width: 50vw; height: 50vw; background: rgba(20, 184, 166, 0.15); top: -10%; left: -10%; }
-.orb-2 { width: 40vw; height: 40vw; background: rgba(14, 165, 233, 0.15); bottom: -10%; right: -10%; animation-delay: -10s; }
+.orb-1 { width: 50vw; height: 50vw; background: rgba(56, 181, 160, 0.12); top: -10%; left: -10%; }
+.orb-2 { width: 40vw; height: 40vw; background: rgba(255, 222, 89, 0.08); bottom: -10%; right: -10%; animation-delay: -10s; }
 
 @keyframes floatOrb {
     0% { transform: translate(0, 0) scale(1); }

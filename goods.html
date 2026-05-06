@@ -6,29 +6,59 @@
     <title data-i18n="goods_title">商城</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .pricing-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px; max-width: 1000px; margin: 60px auto;
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
         }
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--brand-primary);
+            margin-bottom: 10px;
+        }
+        
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; max-width: 1200px; margin: 0 auto 60px;
+        }
+        
         .price-card {
             background: var(--bg-panel); border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg); padding: 50px 40px; text-align: center;
+            border-radius: var(--radius-lg); padding: 40px 30px; text-align: center;
             backdrop-filter: var(--blur-md); transition: all 0.4s; position: relative;
             overflow: hidden;
+            display: flex; flex-direction: column;
         }
-        .price-card.pro { border-color: var(--brand-primary); transform: scale(1.05); }
+        .price-card:hover { border-color: var(--border-highlight); transform: translateY(-5px); box-shadow: var(--shadow-neon); }
+        .price-card.pro { border-color: var(--brand-primary); transform: scale(1.05); background: rgba(56, 181, 160, 0.05); }
+        .price-card.pro:hover { transform: scale(1.05) translateY(-5px); }
         .price-card.pro::before {
             content: 'HOT'; position: absolute; top: 20px; right: -35px; background: var(--brand-primary);
             color: #fff; font-size: 12px; font-weight: bold; padding: 5px 40px; transform: rotate(45deg);
         }
-        .price-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .price-num { font-size: 4rem; font-weight: 900; margin-bottom: 20px; font-family: 'JetBrains Mono'; }
-        .price-num span { font-size: 1.5rem; color: var(--text-muted); }
+        .price-card h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main); }
+        .price-num { font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; font-family: 'JetBrains Mono'; color: var(--text-main); }
+        .price-num span { font-size: 1.2rem; color: var(--text-muted); }
+        .price-desc { color: var(--text-muted); margin-bottom: 30px; flex-grow: 1; font-size: 0.95rem; line-height: 1.6; }
+        
+        .addon-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px; max-width: 1000px; margin: 0 auto 80px;
+        }
+        .addon-card {
+            background: var(--bg-panel); border: 1px dashed var(--border-light);
+            border-radius: var(--radius-md); padding: 30px;
+            display: flex; align-items: center; justify-content: space-between;
+            transition: all 0.3s;
+        }
+        .addon-card:hover { border-color: var(--brand-accent); background: rgba(255, 222, 89, 0.05); }
+        .addon-info h3 { font-size: 1.2rem; color: var(--brand-accent); margin-bottom: 8px; }
+        .addon-info p { color: var(--text-muted); font-size: 0.9rem; }
     </style>
 </head>
 <body>
     <div class="cyber-grid"></div>
     <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
     <nav>
         <div class="logo">GALAXY QUANT</div>
@@ -45,22 +75,65 @@
         </div>
     </nav>
 
-    <div class="main-content" style="margin-left: 0; max-width: 100%; padding-top: 120px; text-align: center;">
-        <h1 class="page-title" style="justify-content: center;" data-i18n="goods_title">VIP 服务商城</h1>
+    <div class="main-content" style="margin-left: 0; max-width: 100%; padding-top: 120px;">
         
+        <div class="section-header">
+            <h2 data-i18n="goods_section_base">基础跟单套餐</h2>
+        </div>
+
         <div class="pricing-grid">
+            <!-- 1 Month -->
             <div class="price-card">
-                <h3 data-i18n="goods_pkg_6m">6 个月 VIP 套餐</h3>
-                <div class="price-num">408<span>U</span></div>
-                <p style="color: var(--text-muted); margin-bottom: 40px; min-height: 50px;"></p>
+                <h3 data-i18n="goods_pkg_1m">月付套餐</h3>
+                <div class="price-num">80<span>U</span></div>
+                <p class="price-desc" data-i18n="goods_pkg_1m_desc">基础智能跟单服务，体验交易员策略。</p>
                 <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
             </div>
             
+            <!-- 3 Months -->
+            <div class="price-card">
+                <h3 data-i18n="goods_pkg_3m">季付套餐</h3>
+                <div class="price-num">216<span>U</span></div>
+                <p class="price-desc" data-i18n="goods_pkg_3m_desc">三个月稳定跟单服务，性价比之选。</p>
+                <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
+            </div>
+
+            <!-- 6 Months -->
+            <div class="price-card">
+                <h3 data-i18n="goods_pkg_6m">半年套餐</h3>
+                <div class="price-num">408<span>U</span></div>
+                <p class="price-desc" data-i18n="goods_pkg_6m_desc">尊享优先客服支持与高速信号通道。</p>
+                <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
+            </div>
+            
+            <!-- 1 Year -->
             <div class="price-card pro">
-                <h3 data-i18n="goods_pkg_1" style="color: var(--brand-primary);">1 年 VIP 尊享套餐</h3>
+                <h3 data-i18n="goods_pkg_1y" style="color: var(--brand-primary);">1 年 VIP 尊享</h3>
                 <div class="price-num">768<span>U</span></div>
-                <p style="color: var(--text-muted); margin-bottom: 40px; min-height: 50px;" data-i18n="goods_pkg_1_desc">解锁全平台顶级交易员信号，享受最低延迟跟单体验。</p>
+                <p class="price-desc" data-i18n="goods_pkg_1y_desc">解锁全平台顶级交易员，享受极低延迟体验。</p>
                 <button class="btn-primary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2 data-i18n="goods_section_addon" style="color: var(--brand-accent);">增值服务</h2>
+        </div>
+
+        <div class="addon-grid">
+            <div class="addon-card">
+                <div class="addon-info">
+                    <h3 data-i18n="goods_addon_account">额外账户席位</h3>
+                    <p data-i18n="goods_addon_account_desc">支持同时绑定并运行多个交易所 API。</p>
+                </div>
+                <button class="btn-secondary" style="border-color: var(--brand-accent); color: var(--brand-accent);" data-i18n="goods_btn_add">开通席位</button>
+            </div>
+
+            <div class="addon-card">
+                <div class="addon-info">
+                    <h3 data-i18n="goods_addon_renew">一键续费</h3>
+                    <p data-i18n="goods_addon_renew_desc">为当前运行中的套餐无缝延长有效期。</p>
+                </div>
+                <button class="btn-primary" style="background: var(--gold-gradient); box-shadow: 0 0 20px rgba(255,222,89,0.3);" data-i18n="goods_btn_renew">立即续费</button>
             </div>
         </div>
     </div>
