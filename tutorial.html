@@ -64,17 +64,21 @@
 <body>
     <div class="cyber-grid"></div>
     <nav>
-        <div class="logo">GALAXY QUANT</div>
-        <div class="nav-links">
-            <a href="/" data-i18n="nav_home">首页</a>
-            <a href="/invite" data-i18n="nav_invite">推广返佣</a>
-            <a href="/goods" data-i18n="nav_goods">商城</a>
-            <a href="/tutorial" class="active" data-i18n="nav_tutorial">使用教程</a>
-            <div class="lang-switch">
-                <button class="lang-btn active" onclick="setLang('zh')">中</button>
-                <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <div class="nav-shell">
+            <a href="/" class="logo">GALAXY QUANT</a>
+            <div class="nav-links">
+                <a href="/" data-i18n="nav_home">首页</a>
+                <a href="/invite" data-i18n="nav_invite">推广返佣</a>
+                <a href="/goods" data-i18n="nav_goods">商城</a>
+                <a href="/tutorial" class="active" data-i18n="nav_tutorial">使用教程</a>
+                <a href="/kzt" data-i18n="nav_console">控制台</a>
             </div>
-            <a href="/kzt" class="btn-primary" data-i18n="nav_console" style="padding: 10px 24px; font-size: 0.85rem;">控制台</a>
+            <div class="nav-actions">
+                <div class="lang-switch">
+                    <button class="lang-btn active" onclick="setLang('zh')">中</button>
+                    <button class="lang-btn" onclick="setLang('en')">EN</button>
+                </div>
+            </div>
         </div>
     </nav>
     <div class="main-content" style="margin-left: 0; max-width: 1100px; margin: 0 auto; padding-top: 120px;">
