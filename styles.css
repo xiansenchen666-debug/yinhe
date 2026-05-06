@@ -113,11 +113,7 @@ nav {
     gap: 10px;
 }
 .logo::before {
-    content: '';
-    display: block;
-    width: 24px; height: 24px;
-    background: var(--brand-gradient);
-    border-radius: 4px;
+    display: none;
 }
 
 .nav-links {
@@ -286,10 +282,10 @@ nav {
     border: 1px solid transparent;
 }
 .sidebar a:hover, .sidebar a.active {
-    background: rgba(197, 160, 89, 0.05);
-    color: var(--brand-accent);
-    border-color: var(--border-highlight);
-    box-shadow: inset 0 0 20px rgba(197, 160, 89, 0.05);
+    background: rgba(26, 43, 60, 0.05);
+    color: var(--brand-primary);
+    border-color: rgba(26, 43, 60, 0.1);
+    box-shadow: none;
 }
 
 .layout-dashboard .main-content {
