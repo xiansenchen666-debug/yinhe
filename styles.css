@@ -391,3 +391,64 @@ nav {
         padding-right: 20px;
     }
 }
+
+/* ==========================================================================
+   Apple-Style Interactive Effects
+   ========================================================================== */
+
+/* 1. Apple 式缓动曲线重写 AOS */
+[data-aos] {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* 2. 导航栏滚动模糊与收缩 (Apple Glass) */
+nav {
+    transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.5s ease, backdrop-filter 0.5s ease, box-shadow 0.5s ease !important;
+}
+nav.nav-scrolled {
+    padding: 12px 4%;
+    background: rgba(253, 251, 247, 0.65);
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    box-shadow: 0 4px 30px rgba(26, 43, 60, 0.05);
+}
+
+/* 3. 鼠标探照灯特效 (Spotlight Hover) */
+.feature-card, .price-card, .addon-card, .tutorial-card, .stat-card, .info-card, .security-card, .glass-panel {
+    position: relative;
+    overflow: hidden;
+    /* 移除原生 AOS 的溢出隐藏限制（如果有），否则探照灯可能被截断，但通常 hidden 是必须的 */
+}
+/* 利用 ::after 伪元素实现探照灯层，基于 js 计算的坐标 */
+.feature-card::after, .price-card::after, .addon-card::after, .tutorial-card::after, .stat-card::after, .info-card::after, .security-card::after, .glass-panel::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* 动态渐变位置 */
+    background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, -50%), rgba(197, 160, 89, 0.06), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 1;
+}
+.feature-card:hover::after, .price-card:hover::after, .addon-card:hover::after, .tutorial-card:hover::after, .stat-card:hover::after, .info-card:hover::after, .security-card:hover::after, .glass-panel:hover::after {
+    opacity: 1;
+}
+/* 保证内容不被遮挡 */
+.feature-card > *, .price-card > *, .addon-card > *, .tutorial-card > *, .stat-card > *, .info-card > *, .security-card > *, .glass-panel > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* 4. 苹果风渐变文字显影 (可按需应用到 .apple-text-reveal 类) */
+.apple-text-reveal {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 50%, var(--brand-primary) 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shineText 5s linear infinite;
+}
+@keyframes shineText {
+    to { background-position: 200% center; }
+}
