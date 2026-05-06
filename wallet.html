@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="wallet_title">我的钱包</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <nav>
+        <div class="logo">GALAXY QUANT</div>
+        <div class="nav-links">
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('zh')">中</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+            <a href="index.html" class="btn-secondary">退出</a>
+        </div>
+    </nav>
+    <div class="layout-dashboard">
+        <aside class="sidebar">
+            <a href="kzt.html"><span style="font-size: 18px;">📊</span> <span data-i18n="nav_console">控制台</span></a>
+            <a href="wallet.html" class="active"><span style="font-size: 18px;">💰</span> <span data-i18n="nav_wallet">钱包</span></a>
+            <a href="security.html"><span style="font-size: 18px;">🔒</span> <span data-i18n="nav_profile">个人中心</span></a>
+        </aside>
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title" data-i18n="wallet_title">我的钱包</h1>
+            </div>
+            <div class="glass-panel" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                <div>
+                    <div style="color: var(--text-muted); margin-bottom: 10px;" data-i18n="wallet_balance">可用余额 (USDT)</div>
+                    <div style="font-size: 3.5rem; font-weight: 900; font-family: 'JetBrains Mono'; color: var(--brand-accent);">2,450.00</div>
+                </div>
+                <div style="display: flex; gap: 20px;">
+                    <button class="btn-secondary" data-i18n="wallet_btn_withdraw">提现</button>
+                    <button class="btn-primary" data-i18n="wallet_btn_deposit">充值</button>
+                </div>
+            </div>
+            <div class="glass-panel">
+                <h3 style="margin-bottom: 20px;" data-i18n="wallet_history">资金流水</h3>
+                <div style="color: var(--text-muted); text-align: center; padding: 40px 0;">No transaction records found.</div>
+            </div>
+        </main>
+    </div>
+    <script src="i18n.js"></script>
+</body>
+</html>

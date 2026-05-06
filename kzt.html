@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="kzt_title">跟单控制台 - 银河量化</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 40px;
+        }
+        .stat-card {
+            background: var(--bg-panel); border: 1px solid var(--border-light);
+            padding: 30px; border-radius: var(--radius-lg); position: relative; overflow: hidden;
+            backdrop-filter: var(--blur-md); transition: all 0.3s;
+        }
+        .stat-card:hover { border-color: var(--border-highlight); transform: translateY(-5px); }
+        .stat-label { color: var(--text-muted); font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+        .stat-value { font-size: 2.5rem; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+        .stat-value.green { color: var(--brand-primary); text-shadow: 0 0 20px rgba(20,184,166,0.3); }
+
+        .panel-title {
+            font-size: 1.4rem; font-weight: 800; margin-bottom: 25px; padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .trader-list { display: flex; flex-direction: column; gap: 15px; }
+        .trader-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px; background: rgba(255,255,255,0.02); border-radius: var(--radius-md);
+            border: 1px solid var(--border-light); transition: all 0.3s;
+        }
+        .trader-item:hover {
+            border-color: var(--brand-primary); background: rgba(20,184,166,0.05);
+            box-shadow: 0 0 20px rgba(20,184,166,0.1);
+        }
+        .trader-info { display: flex; align-items: center; gap: 15px; }
+        .avatar {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: var(--brand-gradient); display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 20px; color: #fff; box-shadow: 0 4px 10px rgba(20,184,166,0.3);
+        }
+        .trader-name { font-size: 16px; font-weight: 800; color: var(--text-main); }
+        .trader-exchange { font-size: 13px; color: var(--text-muted); margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+        .trader-status {
+            padding: 6px 14px; background: rgba(20,184,166,0.1); color: var(--brand-primary);
+            border-radius: 20px; font-size: 12px; font-weight: bold; border: 1px solid rgba(20,184,166,0.2);
+            box-shadow: 0 0 10px rgba(20,184,166,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="orb orb-1"></div>
+
+    <nav>
+        <div class="logo">GALAXY QUANT</div>
+        <div class="nav-links">
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('zh')">中</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+            <a href="index.html" class="btn-secondary">退出</a>
+        </div>
+    </nav>
+
+    <div class="layout-dashboard">
+        <aside class="sidebar">
+            <a href="kzt.html" class="active">
+                <span style="font-size: 18px;">📊</span> <span data-i18n="nav_console">控制台</span>
+            </a>
+            <a href="wallet.html">
+                <span style="font-size: 18px;">💰</span> <span data-i18n="nav_wallet">钱包</span>
+            </a>
+            <a href="security.html">
+                <span style="font-size: 18px;">🔒</span> <span data-i18n="nav_profile">个人中心</span>
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title" data-i18n="kzt_title">跟单控制台</h1>
+                <button class="btn-primary" data-i18n="kzt_btn_add">添加交易所 API</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label" data-i18n="kzt_stat_1">累计收益</div>
+                    <div class="stat-value green mono-num">+ $12,450.80</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label" data-i18n="kzt_stat_2">策略胜率</div>
+                    <div class="stat-value mono-num">86.5%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label" data-i18n="kzt_stat_3">运行中策略</div>
+                    <div class="stat-value mono-num">3</div>
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <div class="panel-title" data-i18n="kzt_panel_title">正在跟随的交易员</div>
+                <div class="trader-list">
+                    <div class="trader-item">
+                        <div class="trader-info">
+                            <div class="avatar">大</div>
+                            <div>
+                                <div class="trader-name">大夫 (Doctor)</div>
+                                <div class="trader-exchange">Binance API - 0x9f8...2a1</div>
+                            </div>
+                        </div>
+                        <div class="trader-status">Running</div>
+                    </div>
+                    <div class="trader-item">
+                        <div class="trader-info">
+                            <div class="avatar">老</div>
+                            <div>
+                                <div class="trader-name">老恶魔 (Demon)</div>
+                                <div class="trader-exchange">OKX API - 0x3b1...8c4</div>
+                            </div>
+                        </div>
+                        <div class="trader-status">Running</div>
+                    </div>
+                    <div class="trader-item">
+                        <div class="trader-info">
+                            <div class="avatar">鹰</div>
+                            <div>
+                                <div class="trader-name">熬鹰 (Eagle)</div>
+                                <div class="trader-exchange">Gate.io API - 0x7e2...9d5</div>
+                            </div>
+                        </div>
+                        <div class="trader-status">Running</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="i18n.js"></script>
+</body>
+</html>

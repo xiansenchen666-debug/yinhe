@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="security_title">安全与个人中心</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .sec-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 0; border-bottom: 1px solid var(--border-light);
+        }
+        .sec-item:last-child { border-bottom: none; }
+        .sec-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
+        .sec-info p { color: var(--text-muted); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <nav>
+        <div class="logo">GALAXY QUANT</div>
+        <div class="nav-links">
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('zh')">中</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+            <a href="index.html" class="btn-secondary">退出</a>
+        </div>
+    </nav>
+    <div class="layout-dashboard">
+        <aside class="sidebar">
+            <a href="kzt.html"><span style="font-size: 18px;">📊</span> <span data-i18n="nav_console">控制台</span></a>
+            <a href="wallet.html"><span style="font-size: 18px;">💰</span> <span data-i18n="nav_wallet">钱包</span></a>
+            <a href="security.html" class="active"><span style="font-size: 18px;">🔒</span> <span data-i18n="nav_profile">个人中心</span></a>
+        </aside>
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title" data-i18n="security_title">安全与个人中心</h1>
+            </div>
+            <div class="glass-panel">
+                <div class="sec-item">
+                    <div class="sec-info">
+                        <h4 data-i18n="sec_email">绑定邮箱</h4>
+                        <p>user@galaxyquant.com</p>
+                    </div>
+                    <button class="btn-secondary" data-i18n="sec_btn_edit">修改设置</button>
+                </div>
+                <div class="sec-item">
+                    <div class="sec-info">
+                        <h4 data-i18n="sec_pwd">登录密码</h4>
+                        <p>********</p>
+                    </div>
+                    <button class="btn-secondary" data-i18n="sec_btn_edit">修改设置</button>
+                </div>
+                <div class="sec-item">
+                    <div class="sec-info">
+                        <h4 data-i18n="sec_2fa">双重验证 (2FA)</h4>
+                        <p style="color: #ff4d4d;">Not Enabled</p>
+                    </div>
+                    <button class="btn-primary" data-i18n="sec_btn_edit">修改设置</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="i18n.js"></script>
+</body>
+</html>

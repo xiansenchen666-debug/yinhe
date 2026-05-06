@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="hero_title">银河量化智能跟单平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 首页特有样式 */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 20px; padding-top: 80px;
+        }
+        .hero h1 {
+            font-size: 5rem; font-weight: 900; margin-bottom: 20px;
+            letter-spacing: -2px;
+            background: linear-gradient(to bottom right, #ffffff, #94a3b8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero h2 {
+            font-size: 1.8rem; font-weight: 600; color: var(--brand-primary);
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.2rem; color: var(--text-muted);
+            max-width: 600px; margin-bottom: 40px; line-height: 1.8;
+        }
+        .hero-actions { display: flex; gap: 20px; }
+
+        .features {
+            padding: 100px 5%; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px; max-width: 1400px; margin: 0 auto;
+        }
+        .feature-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            padding: 50px 40px; border-radius: var(--radius-lg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; overflow: hidden;
+            backdrop-filter: var(--blur-md);
+        }
+        .feature-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(20, 184, 166, 0.1), transparent 50%);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-highlight);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(20, 184, 166, 0.05);
+        }
+        .feature-card:hover::before { opacity: 1; }
+        
+        .feature-icon {
+            font-size: 3rem; margin-bottom: 25px;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .feature-card h3 { font-size: 1.6rem; margin-bottom: 15px; font-weight: 800; }
+        .feature-card p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <nav>
+        <div class="logo">GALAXY QUANT</div>
+        <div class="nav-links">
+            <a href="index.html" class="active" data-i18n="nav_home">首页</a>
+            <a href="invite.html" data-i18n="nav_invite">推广返佣</a>
+            <a href="goods.html" data-i18n="nav_goods">商城</a>
+            <a href="tutorial.html" data-i18n="nav_tutorial">使用教程</a>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('zh')">中</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+            <a href="kzt.html" class="btn-primary" data-i18n="nav_console">控制台</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 data-i18n="hero_title">银河量化智能跟单</h1>
+        <h2 data-i18n="hero_subtitle">连接主流交易所 · 零分润 · 高速同步</h2>
+        <p data-i18n="hero_desc">一键智能跟单，让高手策略为您稳健盈利，开启数字资产收益新纪元。</p>
+        <div class="hero-actions">
+            <a href="kzt.html" class="btn-primary" data-i18n="btn_get_started">立即开启</a>
+            <a href="#features" class="btn-secondary" data-i18n="btn_learn_more">探索平台</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3 data-i18n="feature_1_title">零分润，收益全归您</h3>
+            <p data-i18n="feature_1_desc">平台不抽取任何利润，仅收固定服务费，真正让策略回报归属用户。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 data-i18n="feature_2_title">超高速跟单引擎</h3>
+            <p data-i18n="feature_2_desc">自研信号同步技术，交易员成交至用户成交仅需 0.02 秒。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3 data-i18n="feature_3_title">主流信号源保障</h3>
+            <p data-i18n="feature_3_desc">支持币安、欧易、Bitget、Gate.io 等全球头部交易所实盘数据。</p>
+        </div>
+    </section>
+
+    <script src="i18n.js"></script>
+</body>
+</html>

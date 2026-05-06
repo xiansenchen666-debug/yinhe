@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="goods_title">商城</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px; max-width: 1000px; margin: 60px auto;
+        }
+        .price-card {
+            background: var(--bg-panel); border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg); padding: 50px 40px; text-align: center;
+            backdrop-filter: var(--blur-md); transition: all 0.4s; position: relative;
+            overflow: hidden;
+        }
+        .price-card.pro { border-color: var(--brand-primary); transform: scale(1.05); }
+        .price-card.pro::before {
+            content: 'HOT'; position: absolute; top: 20px; right: -35px; background: var(--brand-primary);
+            color: #fff; font-size: 12px; font-weight: bold; padding: 5px 40px; transform: rotate(45deg);
+        }
+        .price-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .price-num { font-size: 4rem; font-weight: 900; margin-bottom: 20px; font-family: 'JetBrains Mono'; }
+        .price-num span { font-size: 1.5rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="orb orb-1"></div>
+
+    <nav>
+        <div class="logo">GALAXY QUANT</div>
+        <div class="nav-links">
+            <a href="index.html" data-i18n="nav_home">首页</a>
+            <a href="invite.html" data-i18n="nav_invite">推广返佣</a>
+            <a href="goods.html" class="active" data-i18n="nav_goods">商城</a>
+            <a href="tutorial.html" data-i18n="nav_tutorial">使用教程</a>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('zh')">中</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+            <a href="kzt.html" class="btn-primary" data-i18n="nav_console">控制台</a>
+        </div>
+    </nav>
+
+    <div class="main-content" style="margin-left: 0; max-width: 100%; padding-top: 120px; text-align: center;">
+        <h1 class="page-title" style="justify-content: center;" data-i18n="goods_title">VIP 服务商城</h1>
+        
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3 data-i18n="goods_pkg_6m">6 个月 VIP 套餐</h3>
+                <div class="price-num">408<span>U</span></div>
+                <p style="color: var(--text-muted); margin-bottom: 40px; min-height: 50px;"></p>
+                <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
+            </div>
+            
+            <div class="price-card pro">
+                <h3 data-i18n="goods_pkg_1" style="color: var(--brand-primary);">1 年 VIP 尊享套餐</h3>
+                <div class="price-num">768<span>U</span></div>
+                <p style="color: var(--text-muted); margin-bottom: 40px; min-height: 50px;" data-i18n="goods_pkg_1_desc">解锁全平台顶级交易员信号，享受最低延迟跟单体验。</p>
+                <button class="btn-primary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
+            </div>
+        </div>
+    </div>
+    <script src="i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="tut_title">使用教程</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .tut-step {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 30px; margin-bottom: 20px;
+        }
+        .tut-step h3 { font-size: 1.3rem; color: var(--brand-primary); margin-bottom: 15px; }
+        .tut-step p { color: var(--text-muted); line-height: 1.8; }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <nav>
+        <div class="logo">GALAXY QUANT</div>
+        <div class="nav-links">
+            <a href="index.html" data-i18n="nav_home">首页</a>
+            <a href="invite.html" data-i18n="nav_invite">推广返佣</a>
+            <a href="goods.html" data-i18n="nav_goods">商城</a>
+            <a href="tutorial.html" class="active" data-i18n="nav_tutorial">使用教程</a>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('zh')">中</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+            <a href="kzt.html" class="btn-primary" data-i18n="nav_console">控制台</a>
+        </div>
+    </nav>
+    <div class="main-content" style="margin-left: 0; max-width: 800px; margin: 0 auto; padding-top: 120px;">
+        <h1 class="page-title" style="text-align: center; margin-bottom: 40px;" data-i18n="tut_title">平台使用教程</h1>
+        
+        <div class="glass-panel">
+            <div class="tut-step">
+                <h3 data-i18n="tut_step_1">第一步：在交易所创建并获取 API Key</h3>
+                <p>Log in to your exchange account (Binance, OKX, etc.), navigate to the API management section, create a new API Key, and ensure you enable "Reading" and "Spot Trading" permissions. Do NOT enable withdrawal permissions.</p>
+            </div>
+            <div class="tut-step">
+                <h3 data-i18n="tut_step_2">第二步：在控制台绑定 API</h3>
+                <p>Go to the Galaxy Quantitative console, click on "Add New API", select your exchange, and securely paste your API Key and Secret. Our platform uses enterprise-grade encryption to store your keys.</p>
+            </div>
+            <div class="tut-step">
+                <h3 data-i18n="tut_step_3">第三步：选择心仪交易员，设置风控并启动跟单</h3>
+                <p>Browse our list of top-tier traders, select one that matches your risk appetite, configure your investment amount and stop-loss limits, and start copying their trades instantly.</p>
+            </div>
+        </div>
+    </div>
+    <script src="i18n.js"></script>
+</body>
+</html>
