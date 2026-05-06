@@ -35,6 +35,8 @@
     "invite_stat_earned": "Total Earned",
     
     "goods_title": "Premium Store",
+    "goods_hero_title": "Select Your Quantitative Engine",
+    "goods_hero_desc": "Zero profit sharing, fully transparent. Subscribe to unlock institutional-grade high-frequency signals and top-tier trader strategies.",
     "goods_section_base": "Subscription Plans",
     "goods_section_addon": "Add-on Services",
     "goods_pkg_1m": "1-Month Plan",
@@ -50,6 +52,7 @@
     "goods_addon_renew": "Quick Renewal",
     "goods_addon_renew_desc": "Extend your current active subscription seamlessly.",
     "goods_btn_buy": "Subscribe",
+    "goods_btn_buy_pro": "Get Flagship Edition",
     "goods_btn_renew": "Renew Now",
     "goods_btn_add": "Add Slots",
     
@@ -106,6 +109,8 @@
     "invite_stat_earned": "累计赚取返佣",
 
     "goods_title": "VIP 服务商城",
+    "goods_hero_title": "选择您的量化引擎",
+    "goods_hero_desc": "零分润，全透明。订阅即可解锁机构级的高频信号与顶尖交易员策略。",
     "goods_section_base": "基础跟单套餐",
     "goods_section_addon": "增值服务",
     "goods_pkg_1m": "月付套餐",
@@ -121,6 +126,7 @@
     "goods_addon_renew": "一键续费",
     "goods_addon_renew_desc": "为当前运行中的套餐无缝延长有效期。",
     "goods_btn_buy": "立即订阅",
+    "goods_btn_buy_pro": "立即开通旗舰版",
     "goods_btn_renew": "立即续费",
     "goods_btn_add": "开通席位",
 

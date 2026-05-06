@@ -3,65 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="goods_title">商城</title>
+    <title data-i18n="goods_title">VIP 服务商城 | GALAXY QUANT</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
+        /* 商城专属顶级样式 */
+        .store-container {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
         }
-        .section-header h2 {
-            font-size: 2rem;
+
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             color: var(--brand-primary);
-            margin-bottom: 10px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        
+        .section-label::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, var(--border-light), transparent);
+        }
+
+        /* 订阅计划网格 */
         .pricing-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px; max-width: 1200px; margin: 0 auto 60px;
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px; 
+            align-items: stretch;
         }
         
         .price-card {
-            background: var(--bg-panel); border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg); padding: 40px 30px; text-align: center;
-            backdrop-filter: var(--blur-md); transition: all 0.4s; position: relative;
-            overflow: hidden;
-            display: flex; flex-direction: column;
+            background: var(--bg-panel-solid); 
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md); 
+            padding: 40px 32px; 
+            transition: all 0.4s ease; 
+            position: relative;
+            display: flex; 
+            flex-direction: column;
         }
-        .price-card:hover { border-color: var(--border-highlight); transform: translateY(-5px); box-shadow: var(--shadow-neon); }
-        .price-card.pro { border-color: var(--brand-primary); transform: scale(1.05); background: rgba(56, 181, 160, 0.05); }
-        .price-card.pro:hover { transform: scale(1.05) translateY(-5px); }
-        .price-card.pro::before {
-            content: 'HOT'; position: absolute; top: 20px; right: -35px; background: var(--brand-primary);
-            color: #fff; font-size: 12px; font-weight: bold; padding: 5px 40px; transform: rotate(45deg);
+        .price-card:hover { 
+            border-color: rgba(255, 255, 255, 0.2); 
+            transform: translateY(-4px); 
+            box-shadow: var(--shadow-panel); 
         }
-        .price-card h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main); }
-        .price-num { font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; font-family: 'JetBrains Mono'; color: var(--text-main); }
-        .price-num span { font-size: 1.2rem; color: var(--text-muted); }
-        .price-desc { color: var(--text-muted); margin-bottom: 30px; flex-grow: 1; font-size: 0.95rem; line-height: 1.6; }
         
+        /* 旗舰版高亮 */
+        .price-card.pro { 
+            background: linear-gradient(180deg, rgba(20, 20, 22, 1) 0%, rgba(30, 26, 15, 1) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+        }
+        .price-card.pro::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--brand-gradient);
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+        .price-card.pro:hover { 
+            border-color: var(--brand-primary); 
+            box-shadow: var(--shadow-gold); 
+        }
+        
+        .tag-best {
+            position: absolute;
+            top: 24px; right: 24px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--brand-primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .card-header { margin-bottom: 30px; }
+        .card-title { font-size: 1.25rem; font-weight: 600; color: var(--text-main); margin-bottom: 12px; }
+        
+        .price-wrap { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 8px; }
+        .price-currency { font-size: 1.5rem; color: var(--text-muted); font-weight: 500; margin-bottom: 6px; }
+        .price-num { font-size: 3.5rem; font-weight: 800; font-family: 'Inter', sans-serif; letter-spacing: -2px; line-height: 1; }
+        .price-period { font-size: 1rem; color: var(--text-muted); margin-bottom: 8px; }
+        
+        .price-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; min-height: 44px; }
+        
+        .feature-list {
+            list-style: none; margin: 30px 0; flex-grow: 1;
+            display: flex; flex-direction: column; gap: 16px;
+        }
+        .feature-list li {
+            display: flex; align-items: flex-start; gap: 12px;
+            font-size: 0.9rem; color: #d1d1d6; line-height: 1.5;
+        }
+        .feature-list li::before {
+            content: '✓'; color: var(--text-main); font-weight: bold; font-size: 1rem;
+        }
+        .price-card.pro .feature-list li::before { color: var(--brand-primary); }
+
+        /* 增值服务网格 (账户 & 续费) */
         .addon-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px; max-width: 1000px; margin: 0 auto 80px;
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
         }
         .addon-card {
-            background: var(--bg-panel); border: 1px dashed var(--border-light);
-            border-radius: var(--radius-md); padding: 30px;
-            display: flex; align-items: center; justify-content: space-between;
+            background: var(--bg-panel-solid); 
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md); 
+            padding: 40px;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        .addon-card:hover { border-color: var(--brand-accent); background: rgba(255, 222, 89, 0.05); }
-        .addon-info h3 { font-size: 1.2rem; color: var(--brand-accent); margin-bottom: 8px; }
-        .addon-info p { color: var(--text-muted); font-size: 0.9rem; }
+        .addon-card::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+            background: var(--border-light); transition: all 0.3s;
+        }
+        .addon-card:hover { border-color: rgba(255, 255, 255, 0.2); }
+        .addon-card:hover::before { background: var(--text-main); }
+        
+        .addon-info { max-width: 60%; }
+        .addon-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; color: var(--text-main); }
+        .addon-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+        .addon-price { font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-top: 12px; font-family: 'JetBrains Mono'; }
+        
+        .addon-action {
+            display: flex; flex-direction: column; gap: 12px; align-items: flex-end;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1200px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .pricing-grid, .addon-grid { grid-template-columns: 1fr; }
+            .addon-card { flex-direction: column; align-items: flex-start; gap: 24px; }
+            .addon-info { max-width: 100%; }
+            .addon-action { align-items: flex-start; width: 100%; }
+            .addon-action button { width: 100%; }
+        }
     </style>
 </head>
 <body>
-    <div class="cyber-grid"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+    <div class="ambient-light"></div>
 
     <nav>
-        <div class="logo">GALAXY QUANT</div>
+        <div class="logo">GALAXY</div>
         <div class="nav-links">
             <a href="index.html" data-i18n="nav_home">首页</a>
             <a href="invite.html" data-i18n="nav_invite">推广返佣</a>
@@ -71,71 +166,138 @@
                 <button class="lang-btn active" onclick="setLang('zh')">中</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
             </div>
-            <a href="kzt.html" class="btn-primary" data-i18n="nav_console">控制台</a>
+            <a href="kzt.html" class="btn-primary" data-i18n="nav_console" style="padding: 10px 24px; font-size: 0.85rem;">控制台</a>
         </div>
     </nav>
 
-    <div class="main-content" style="margin-left: 0; max-width: 100%; padding-top: 120px;">
+    <div class="main-content">
         
-        <div class="section-header">
-            <h2 data-i18n="goods_section_base">基础跟单套餐</h2>
+        <div class="page-header">
+            <h1 class="page-title" data-i18n="goods_hero_title">选择您的量化引擎</h1>
+            <p class="page-subtitle" data-i18n="goods_hero_desc">零分润，全透明。订阅即可解锁机构级的高频信号与顶尖交易员策略。</p>
         </div>
 
-        <div class="pricing-grid">
-            <!-- 1 Month -->
-            <div class="price-card">
-                <h3 data-i18n="goods_pkg_1m">月付套餐</h3>
-                <div class="price-num">80<span>U</span></div>
-                <p class="price-desc" data-i18n="goods_pkg_1m_desc">基础智能跟单服务，体验交易员策略。</p>
-                <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
-            </div>
-            
-            <!-- 3 Months -->
-            <div class="price-card">
-                <h3 data-i18n="goods_pkg_3m">季付套餐</h3>
-                <div class="price-num">216<span>U</span></div>
-                <p class="price-desc" data-i18n="goods_pkg_3m_desc">三个月稳定跟单服务，性价比之选。</p>
-                <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
-            </div>
+        <div class="store-container">
+            <!-- 基础订阅区 -->
+            <section>
+                <div class="section-label" data-i18n="goods_section_base">基础订阅计划</div>
+                <div class="pricing-grid">
+                    <!-- 1 Month -->
+                    <div class="price-card">
+                        <div class="card-header">
+                            <h3 class="card-title" data-i18n="goods_pkg_1m">月付订阅</h3>
+                            <p class="price-desc" data-i18n="goods_pkg_1m_desc">适合初次体验机构级智能跟单的投资者。</p>
+                        </div>
+                        <div class="price-wrap">
+                            <span class="price-currency">$</span>
+                            <span class="price-num">80</span>
+                            <span class="price-period">/月</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li>解锁基础交易员策略库</li>
+                            <li>标准毫秒级信号同步</li>
+                            <li>单交易所 API 绑定</li>
+                            <li>社区基础技术支持</li>
+                        </ul>
+                        <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">选择计划</button>
+                    </div>
+                    
+                    <!-- 3 Months -->
+                    <div class="price-card">
+                        <div class="card-header">
+                            <h3 class="card-title" data-i18n="goods_pkg_3m">季付订阅</h3>
+                            <p class="price-desc" data-i18n="goods_pkg_3m_desc">短周期稳健跟单，享受基础折扣优惠。</p>
+                        </div>
+                        <div class="price-wrap">
+                            <span class="price-currency">$</span>
+                            <span class="price-num">216</span>
+                            <span class="price-period">/季</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li>包含月付所有功能</li>
+                            <li>节省 10% 订阅费用</li>
+                            <li>开启策略回撤保护预警</li>
+                            <li>专属社群交流权限</li>
+                        </ul>
+                        <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">选择计划</button>
+                    </div>
 
-            <!-- 6 Months -->
-            <div class="price-card">
-                <h3 data-i18n="goods_pkg_6m">半年套餐</h3>
-                <div class="price-num">408<span>U</span></div>
-                <p class="price-desc" data-i18n="goods_pkg_6m_desc">尊享优先客服支持与高速信号通道。</p>
-                <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
-            </div>
-            
-            <!-- 1 Year -->
-            <div class="price-card pro">
-                <h3 data-i18n="goods_pkg_1y" style="color: var(--brand-primary);">1 年 VIP 尊享</h3>
-                <div class="price-num">768<span>U</span></div>
-                <p class="price-desc" data-i18n="goods_pkg_1y_desc">解锁全平台顶级交易员，享受极低延迟体验。</p>
-                <button class="btn-primary" style="width: 100%;" data-i18n="goods_btn_buy">立即订阅</button>
-            </div>
-        </div>
-
-        <div class="section-header">
-            <h2 data-i18n="goods_section_addon" style="color: var(--brand-accent);">增值服务</h2>
-        </div>
-
-        <div class="addon-grid">
-            <div class="addon-card">
-                <div class="addon-info">
-                    <h3 data-i18n="goods_addon_account">额外账户席位</h3>
-                    <p data-i18n="goods_addon_account_desc">支持同时绑定并运行多个交易所 API。</p>
+                    <!-- 6 Months -->
+                    <div class="price-card">
+                        <div class="card-header">
+                            <h3 class="card-title" data-i18n="goods_pkg_6m">半年订阅</h3>
+                            <p class="price-desc" data-i18n="goods_pkg_6m_desc">中长线投资者的优选，提供更稳定的回报周期。</p>
+                        </div>
+                        <div class="price-wrap">
+                            <span class="price-currency">$</span>
+                            <span class="price-num">408</span>
+                            <span class="price-period">/半年</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li>包含季付所有功能</li>
+                            <li>节省 15% 订阅费用</li>
+                            <li>优先享有新策略测试权</li>
+                            <li>1v1 专属客服通道</li>
+                        </ul>
+                        <button class="btn-secondary" style="width: 100%;" data-i18n="goods_btn_buy">选择计划</button>
+                    </div>
+                    
+                    <!-- 1 Year -->
+                    <div class="price-card pro">
+                        <div class="tag-best">Best Value</div>
+                        <div class="card-header">
+                            <h3 class="card-title" data-i18n="goods_pkg_1y" style="color: var(--brand-primary);">年度 VIP 旗舰版</h3>
+                            <p class="price-desc" data-i18n="goods_pkg_1y_desc">解锁最高权限与极限性能，为专业量化打造。</p>
+                        </div>
+                        <div class="price-wrap">
+                            <span class="price-currency" style="color: var(--brand-primary);">$</span>
+                            <span class="price-num">768</span>
+                            <span class="price-period">/年</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li>最高级别 API 极速通道 (0.01s)</li>
+                            <li>节省 20% 订阅费用</li>
+                            <li>解锁全平台隐秘顶级交易员</li>
+                            <li>免费赠送 1 个额外账户席位</li>
+                            <li>支持私有化部署咨询</li>
+                        </ul>
+                        <button class="btn-gold" style="width: 100%;" data-i18n="goods_btn_buy_pro">立即开通旗舰版</button>
+                    </div>
                 </div>
-                <button class="btn-secondary" style="border-color: var(--brand-accent); color: var(--brand-accent);" data-i18n="goods_btn_add">开通席位</button>
-            </div>
+            </section>
 
-            <div class="addon-card">
-                <div class="addon-info">
-                    <h3 data-i18n="goods_addon_renew">一键续费</h3>
-                    <p data-i18n="goods_addon_renew_desc">为当前运行中的套餐无缝延长有效期。</p>
+            <!-- 增值与扩展服务区 (续费/开通账户) -->
+            <section>
+                <div class="section-label" data-i18n="goods_section_addon" style="color: var(--text-main);">增值与扩展服务</div>
+                <div class="addon-grid">
+                    
+                    <!-- 额外账户 -->
+                    <div class="addon-card">
+                        <div class="addon-info">
+                            <h3 class="addon-title" data-i18n="goods_addon_account">开通额外账户席位</h3>
+                            <p class="addon-desc" data-i18n="goods_addon_account_desc">突破单一交易所 API 限制。支持同时运行币安、欧易等多平台，或同一平台绑定多个子账户，实现资金分散与策略多开。</p>
+                            <div class="addon-price">20 U / 月</div>
+                        </div>
+                        <div class="addon-action">
+                            <button class="btn-secondary" data-i18n="goods_btn_add">增加席位</button>
+                        </div>
+                    </div>
+
+                    <!-- 订阅续费 -->
+                    <div class="addon-card">
+                        <div class="addon-info">
+                            <h3 class="addon-title" data-i18n="goods_addon_renew">计划续费与时长充值</h3>
+                            <p class="addon-desc" data-i18n="goods_addon_renew_desc">为当前正在运行中的订阅计划无缝延长有效期，避免因过期导致的策略中断。支持按原价补齐差价升级为高级计划。</p>
+                        </div>
+                        <div class="addon-action">
+                            <button class="btn-primary" data-i18n="goods_btn_renew">立即续费</button>
+                        </div>
+                    </div>
+
                 </div>
-                <button class="btn-primary" style="background: var(--gold-gradient); box-shadow: 0 0 20px rgba(255,222,89,0.3);" data-i18n="goods_btn_renew">立即续费</button>
-            </div>
+            </section>
         </div>
+
     </div>
     <script src="i18n.js"></script>
 </body>
