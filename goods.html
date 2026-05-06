@@ -50,15 +50,15 @@
             flex-direction: column;
         }
         .price-card:hover { 
-            border-color: rgba(255, 255, 255, 0.2); 
+            border-color: var(--border-highlight); 
             transform: translateY(-4px); 
             box-shadow: var(--shadow-panel); 
         }
         
         /* 旗舰版高亮 */
         .price-card.pro { 
-            background: linear-gradient(180deg, rgba(20, 20, 22, 1) 0%, rgba(30, 26, 15, 1) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.3); 
+            background: linear-gradient(180deg, #FFFFFF 0%, #FDFBF7 100%);
+            border: 1px solid var(--border-highlight); 
         }
         .price-card.pro::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
@@ -66,20 +66,20 @@
             border-radius: var(--radius-md) var(--radius-md) 0 0;
         }
         .price-card.pro:hover { 
-            border-color: var(--brand-primary); 
+            border-color: var(--brand-accent); 
             box-shadow: var(--shadow-gold); 
         }
         
         .tag-best {
             position: absolute;
             top: 24px; right: 24px;
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--brand-primary);
+            background: rgba(197, 160, 89, 0.1);
+            color: var(--brand-accent);
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 700;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(197, 160, 89, 0.2);
         }
 
         .card-header { margin-bottom: 30px; }
@@ -98,12 +98,12 @@
         }
         .feature-list li {
             display: flex; align-items: flex-start; gap: 12px;
-            font-size: 0.9rem; color: #d1d1d6; line-height: 1.5;
+            font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;
         }
         .feature-list li::before {
-            content: '✓'; color: var(--text-main); font-weight: bold; font-size: 1rem;
+            content: '✓'; color: var(--brand-primary); font-weight: bold; font-size: 1rem;
         }
-        .price-card.pro .feature-list li::before { color: var(--brand-primary); }
+        .price-card.pro .feature-list li::before { color: var(--brand-accent); }
 
         /* 增值服务网格 (账户 & 续费) */
         .addon-grid {
@@ -127,8 +127,8 @@
             content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
             background: var(--border-light); transition: all 0.3s;
         }
-        .addon-card:hover { border-color: rgba(255, 255, 255, 0.2); }
-        .addon-card:hover::before { background: var(--text-main); }
+        .addon-card:hover { border-color: var(--border-highlight); }
+        .addon-card:hover::before { background: var(--brand-accent); }
         
         .addon-info { max-width: 60%; }
         .addon-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; color: var(--text-main); }
