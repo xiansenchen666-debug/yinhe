@@ -69,15 +69,15 @@
     <nav>
         <div class="logo">GALAXY QUANT</div>
         <div class="nav-links">
-            <a href="index.html" class="active" data-i18n="nav_home">首页</a>
-            <a href="invite.html" data-i18n="nav_invite">推广返佣</a>
-            <a href="goods.html" data-i18n="nav_goods">商城</a>
-            <a href="tutorial.html" data-i18n="nav_tutorial">使用教程</a>
+            <a href="/" class="active" data-i18n="nav_home">首页</a>
+            <a href="/invite" data-i18n="nav_invite">推广返佣</a>
+            <a href="/goods" data-i18n="nav_goods">商城</a>
+            <a href="/tutorial" data-i18n="nav_tutorial">使用教程</a>
             <div class="lang-switch">
                 <button class="lang-btn active" onclick="setLang('zh')">中</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
             </div>
-            <a href="kzt.html" class="btn-primary" data-i18n="nav_console">控制台</a>
+            <a href="/kzt" class="btn-primary" data-i18n="nav_console">控制台</a>
         </div>
     </nav>
 
@@ -86,8 +86,8 @@
         <h2 data-i18n="hero_subtitle">连接主流交易所 · 零分润 · 高速同步</h2>
         <p data-i18n="hero_desc">一键智能跟单，让高手策略为您稳健盈利，开启数字资产收益新纪元。</p>
         <div class="hero-actions">
-            <a href="kzt.html" class="btn-primary" data-i18n="btn_get_started">立即开启</a>
-            <a href="#features" class="btn-secondary" data-i18n="btn_learn_more">探索平台</a>
+            <a href="/kzt" class="btn-primary" data-i18n="hero_btn_start">立即开启跟单</a>
+            <a href="/tutorial" class="btn-secondary" data-i18n="hero_btn_docs">查看教程</a>
         </div>
     </section>
 
@@ -106,6 +106,39 @@
             <div class="feature-icon">🌐</div>
             <h3 data-i18n="feature_3_title">主流信号源保障</h3>
             <p data-i18n="feature_3_desc">支持币安、欧易、Bitget、Gate.io 等全球头部交易所实盘数据。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 data-i18n="feature_4_title">极高安全性</h3>
+            <p data-i18n="feature_4_desc">资金始终保存在您的个人交易所账户中，我们仅需读取和交易权限，无法提现您的资产。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 data-i18n="feature_5_title">透明的数据分析</h3>
+            <p data-i18n="feature_5_desc">每笔交易、历史胜率、盈亏比一目了然。我们为您提供机构级的可视化图表分析工具。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3 data-i18n="feature_6_title">7×24专属客服</h3>
+            <p data-i18n="feature_6_desc">专业的技术团队全天候待命，为您解答关于策略、API配置及续费等一切问题。</p>
+        </div>
+    </section>
+
+    <!-- 加入统计数据部分 -->
+    <section class="stats-section" style="padding: 80px 5%; background: rgba(255, 255, 255, 0.4); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); margin-bottom: 100px;">
+        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px; text-align: center;">
+            <div>
+                <div style="font-size: 3.5rem; font-weight: 900; color: var(--brand-primary); font-family: 'JetBrains Mono', monospace;">$50M+</div>
+                <div style="color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; font-weight: 600;">管理资金规模</div>
+            </div>
+            <div>
+                <div style="font-size: 3.5rem; font-weight: 900; color: var(--brand-accent); font-family: 'JetBrains Mono', monospace;">1.2ms</div>
+                <div style="color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; font-weight: 600;">平均跟单延迟</div>
+            </div>
+            <div>
+                <div style="font-size: 3.5rem; font-weight: 900; color: var(--brand-primary); font-family: 'JetBrains Mono', monospace;">10,000+</div>
+                <div style="color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; font-weight: 600;">活跃跟单用户</div>
+            </div>
         </div>
     </section>
 

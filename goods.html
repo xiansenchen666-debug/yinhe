@@ -150,6 +150,15 @@
             .addon-action { align-items: flex-start; width: 100%; }
             .addon-action button { width: 100%; }
         }
+        /* FAQ */
+        .faq-section { margin-top: 80px; }
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+            padding: 24px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px; }
+        .faq-a { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -158,15 +167,15 @@
     <nav>
         <div class="logo">GALAXY</div>
         <div class="nav-links">
-            <a href="index.html" data-i18n="nav_home">首页</a>
-            <a href="invite.html" data-i18n="nav_invite">推广返佣</a>
-            <a href="goods.html" class="active" data-i18n="nav_goods">商城</a>
-            <a href="tutorial.html" data-i18n="nav_tutorial">使用教程</a>
+            <a href="/" data-i18n="nav_home">首页</a>
+            <a href="/invite" data-i18n="nav_invite">推广返佣</a>
+            <a href="/goods" class="active" data-i18n="nav_goods">商城</a>
+            <a href="/tutorial" data-i18n="nav_tutorial">使用教程</a>
             <div class="lang-switch">
                 <button class="lang-btn active" onclick="setLang('zh')">中</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
             </div>
-            <a href="kzt.html" class="btn-primary" data-i18n="nav_console" style="padding: 10px 24px; font-size: 0.85rem;">控制台</a>
+            <a href="/kzt" class="btn-primary" data-i18n="nav_console" style="padding: 10px 24px; font-size: 0.85rem;">控制台</a>
         </div>
     </nav>
 
@@ -294,6 +303,25 @@
                         </div>
                     </div>
 
+                </div>
+            </section>
+
+            <!-- 常见问题 -->
+            <section class="faq-section">
+                <div class="section-label">常见问题 FAQ</div>
+                <div class="glass-panel" style="padding: 20px 40px;">
+                    <div class="faq-item">
+                        <div class="faq-q">订阅后如何开始跟单？</div>
+                        <div class="faq-a">购买订阅计划后，您只需在控制台绑定您的交易所 API Key，并选择您心仪的交易员，点击“跟随”即可自动同步策略。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">额外账户席位有什么用？</div>
+                        <div class="faq-a">基础订阅默认支持绑定 1 个交易所账户。如果您需要在币安和欧易同时跟单，或者在同一个交易所绑定多个子账户运行不同策略，就需要购买额外席位。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">续费可以更换套餐吗？</div>
+                        <div class="faq-a">可以的。您可以在当前套餐未过期前，选择续费并补齐差价升级到高级计划，例如从季付升级到年度旗舰版。</div>
+                    </div>
                 </div>
             </section>
         </div>

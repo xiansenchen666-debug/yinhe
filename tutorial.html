@@ -14,6 +14,51 @@
         }
         .tut-step h3 { font-size: 1.3rem; color: var(--brand-primary); margin-bottom: 15px; }
         .tut-step p { color: var(--text-muted); line-height: 1.8; }
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 28px;
+            margin-top: 32px;
+        }
+        .check-list {
+            display: grid;
+            gap: 14px;
+        }
+        .check-item {
+            padding: 18px 20px;
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            background: var(--bg-panel-solid);
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .check-item strong {
+            color: var(--text-main);
+        }
+        .faq-box {
+            margin-top: 28px;
+        }
+        .faq-row {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .faq-row:last-child {
+            border-bottom: none;
+        }
+        .faq-row h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--brand-primary);
+        }
+        .faq-row p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        @media (max-width: 900px) {
+            .tutorial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -21,32 +66,66 @@
     <nav>
         <div class="logo">GALAXY QUANT</div>
         <div class="nav-links">
-            <a href="index.html" data-i18n="nav_home">首页</a>
-            <a href="invite.html" data-i18n="nav_invite">推广返佣</a>
-            <a href="goods.html" data-i18n="nav_goods">商城</a>
-            <a href="tutorial.html" class="active" data-i18n="nav_tutorial">使用教程</a>
+            <a href="/" data-i18n="nav_home">首页</a>
+            <a href="/invite" data-i18n="nav_invite">推广返佣</a>
+            <a href="/goods" data-i18n="nav_goods">商城</a>
+            <a href="/tutorial" class="active" data-i18n="nav_tutorial">使用教程</a>
             <div class="lang-switch">
                 <button class="lang-btn active" onclick="setLang('zh')">中</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
             </div>
-            <a href="kzt.html" class="btn-primary" data-i18n="nav_console">控制台</a>
+            <a href="/kzt" class="btn-primary" data-i18n="nav_console" style="padding: 10px 24px; font-size: 0.85rem;">控制台</a>
         </div>
     </nav>
-    <div class="main-content" style="margin-left: 0; max-width: 800px; margin: 0 auto; padding-top: 120px;">
+    <div class="main-content" style="margin-left: 0; max-width: 1100px; margin: 0 auto; padding-top: 120px;">
         <h1 class="page-title" style="text-align: center; margin-bottom: 40px;" data-i18n="tut_title">平台使用教程</h1>
         
-        <div class="glass-panel">
-            <div class="tut-step">
-                <h3 data-i18n="tut_step_1">第一步：在交易所创建并获取 API Key</h3>
-                <p>Log in to your exchange account (Binance, OKX, etc.), navigate to the API management section, create a new API Key, and ensure you enable "Reading" and "Spot Trading" permissions. Do NOT enable withdrawal permissions.</p>
+        <div class="tutorial-grid">
+            <div class="glass-panel">
+                <div class="tut-step">
+                    <h3 data-i18n="tut_step_1">第一步：在交易所创建并获取 API Key</h3>
+                    <p>登录您的交易所账户，进入 API 管理页面，新建 API，并仅勾选“读取权限”和“现货/合约交易权限”。请勿开启提现权限，这是标准的安全配置。</p>
+                </div>
+                <div class="tut-step">
+                    <h3 data-i18n="tut_step_2">第二步：在控制台绑定 API</h3>
+                    <p>进入银河量化控制台，点击“添加交易所 API”，选择交易所类型后粘贴 Key 与 Secret。平台使用加密存储方案，避免明文暴露。</p>
+                </div>
+                <div class="tut-step">
+                    <h3 data-i18n="tut_step_3">第三步：选择交易员并设置风控</h3>
+                    <p>根据收益曲线、回撤表现、胜率与交易频率选择适合您的交易员，同时设置单笔仓位、最大回撤、止损阈值，确认后即可启动跟单。</p>
+                </div>
+                <div class="tut-step">
+                    <h3>第四步：持续监控与优化</h3>
+                    <p>建议您每日查看控制台中的最近信号、收益波动和策略表现。若账户规模扩大，可升级订阅计划或开通额外账户席位，实现多账户分仓跟单。</p>
+                </div>
             </div>
-            <div class="tut-step">
-                <h3 data-i18n="tut_step_2">第二步：在控制台绑定 API</h3>
-                <p>Go to the Galaxy Quantitative console, click on "Add New API", select your exchange, and securely paste your API Key and Secret. Our platform uses enterprise-grade encryption to store your keys.</p>
-            </div>
-            <div class="tut-step">
-                <h3 data-i18n="tut_step_3">第三步：选择心仪交易员，设置风控并启动跟单</h3>
-                <p>Browse our list of top-tier traders, select one that matches your risk appetite, configure your investment amount and stop-loss limits, and start copying their trades instantly.</p>
+
+            <div>
+                <div class="glass-panel">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 18px; color: var(--brand-primary);">开通前检查清单</h3>
+                    <div class="check-list">
+                        <div class="check-item"><strong>确认交易所账户正常</strong><br>确保账户已完成身份验证，并具备可用资金。</div>
+                        <div class="check-item"><strong>确认 API 权限正确</strong><br>只保留读取和交易权限，关闭提现权限。</div>
+                        <div class="check-item"><strong>确认网络环境稳定</strong><br>避免本地频繁切换网络，以便及时完成风控确认与通知接收。</div>
+                        <div class="check-item"><strong>确认风险承受能力</strong><br>根据自身资金规模设置跟单金额和最大亏损上限。</div>
+                    </div>
+                </div>
+
+                <div class="glass-panel faq-box">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 4px; color: var(--brand-primary);">常见问题</h3>
+                    <div class="faq-row">
+                        <h4>绑定 API 后可以提现吗？</h4>
+                        <p>不能。平台只建议您开启读取和交易权限，提现权限始终保持关闭状态，因此平台无法转出您的资产。</p>
+                    </div>
+                    <div class="faq-row">
+                        <h4>可以同时跟多个交易员吗？</h4>
+                        <p>可以。如果您需要多策略并行，可通过额外账户席位或多个子账户实现分仓运行。</p>
+                    </div>
+                    <div class="faq-row">
+                        <h4>新手适合选择什么套餐？</h4>
+                        <p>建议从月付或季付开始，熟悉整套跟单流程后，再根据收益目标升级半年或年度旗舰版。</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -5,6 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="wallet_title">我的钱包</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .wallet-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+        .mini-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+        .mini-stat {
+            padding: 24px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            background: var(--bg-panel-solid);
+        }
+        .mini-stat .label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .mini-stat .value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .wallet-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .wallet-table th, .wallet-table td {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-light);
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        .wallet-table th {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .wallet-table tr:last-child td {
+            border-bottom: none;
+        }
+        .status-tag {
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .status-tag.done {
+            color: #15803d;
+            background: rgba(34, 197, 94, 0.1);
+        }
+        .status-tag.pending {
+            color: #b45309;
+            background: rgba(245, 158, 11, 0.12);
+        }
+        .wallet-note {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 960px) {
+            .wallet-grid {
+                grid-template-columns: 1fr;
+            }
+            .mini-stat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="cyber-grid"></div>
@@ -15,32 +91,97 @@
                 <button class="lang-btn active" onclick="setLang('zh')">中</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
             </div>
-            <a href="index.html" class="btn-secondary">退出</a>
+            <a href="/" class="btn-secondary">退出</a>
         </div>
     </nav>
     <div class="layout-dashboard">
         <aside class="sidebar">
-            <a href="kzt.html"><span style="font-size: 18px;">📊</span> <span data-i18n="nav_console">控制台</span></a>
-            <a href="wallet.html" class="active"><span style="font-size: 18px;">💰</span> <span data-i18n="nav_wallet">钱包</span></a>
-            <a href="security.html"><span style="font-size: 18px;">🔒</span> <span data-i18n="nav_profile">个人中心</span></a>
+            <a href="/kzt"><span style="font-size: 18px;">📊</span> <span data-i18n="nav_console">控制台</span></a>
+            <a href="/wallet" class="active"><span style="font-size: 18px;">💰</span> <span data-i18n="nav_wallet">钱包</span></a>
+            <a href="/security"><span style="font-size: 18px;">🔒</span> <span data-i18n="nav_profile">个人中心</span></a>
         </aside>
         <main class="main-content">
             <div class="page-header">
                 <h1 class="page-title" data-i18n="wallet_title">我的钱包</h1>
             </div>
-            <div class="glass-panel" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
-                <div>
-                    <div style="color: var(--text-muted); margin-bottom: 10px;" data-i18n="wallet_balance">可用余额 (USDT)</div>
-                    <div style="font-size: 3.5rem; font-weight: 900; font-family: 'JetBrains Mono'; color: var(--brand-accent);">2,450.00</div>
+            <div class="wallet-grid">
+                <div class="glass-panel" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="color: var(--text-muted); margin-bottom: 10px;" data-i18n="wallet_balance">可用余额 (USDT)</div>
+                        <div style="font-size: 3.5rem; font-weight: 900; font-family: 'JetBrains Mono'; color: var(--brand-accent);">2,450.00</div>
+                    </div>
+                    <div style="display: flex; gap: 20px;">
+                        <button class="btn-secondary" data-i18n="wallet_btn_withdraw">提现</button>
+                        <button class="btn-primary" data-i18n="wallet_btn_deposit">充值</button>
+                    </div>
                 </div>
-                <div style="display: flex; gap: 20px;">
-                    <button class="btn-secondary" data-i18n="wallet_btn_withdraw">提现</button>
-                    <button class="btn-primary" data-i18n="wallet_btn_deposit">充值</button>
+
+                <div class="glass-panel">
+                    <h3 style="margin-bottom: 16px; color: var(--brand-primary);">钱包说明</h3>
+                    <div class="wallet-note">
+                        这里会集中展示您的订阅付款、推广返佣、续费订单和提现申请状态。后续如果接入真实支付接口，您可以直接在本页面完成充值、返佣结算与账单导出。
+                    </div>
                 </div>
             </div>
+
+            <div class="mini-stat-grid">
+                <div class="mini-stat">
+                    <div class="label">累计充值</div>
+                    <div class="value">8,600</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="label">累计返佣</div>
+                    <div class="value" style="color: var(--brand-accent);">4,500</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="label">待处理提现</div>
+                    <div class="value">320</div>
+                </div>
+            </div>
+
             <div class="glass-panel">
                 <h3 style="margin-bottom: 20px;" data-i18n="wallet_history">资金流水</h3>
-                <div style="color: var(--text-muted); text-align: center; padding: 40px 0;">No transaction records found.</div>
+                <table class="wallet-table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>类型</th>
+                            <th>说明</th>
+                            <th>金额</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="mono-num">2026-05-08 14:12</td>
+                            <td>充值</td>
+                            <td>USDT 账户入金</td>
+                            <td class="mono-num">+ 1,000.00</td>
+                            <td><span class="status-tag done">已完成</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono-num">2026-05-08 10:20</td>
+                            <td>返佣</td>
+                            <td>邀请用户购买年度旗舰版</td>
+                            <td class="mono-num" style="color: var(--brand-accent);">+ 460.80</td>
+                            <td><span class="status-tag done">已结算</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono-num">2026-05-07 20:05</td>
+                            <td>订阅扣费</td>
+                            <td>季度套餐续费</td>
+                            <td class="mono-num">- 216.00</td>
+                            <td><span class="status-tag done">已完成</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono-num">2026-05-07 09:30</td>
+                            <td>提现</td>
+                            <td>USDT 提现到个人地址</td>
+                            <td class="mono-num">- 320.00</td>
+                            <td><span class="status-tag pending">处理中</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>

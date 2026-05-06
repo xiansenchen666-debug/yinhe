@@ -45,6 +45,13 @@
             padding: 6px 14px; background: rgba(197,160,89,0.1); color: #A68442;
             border-radius: 20px; font-size: 12px; font-weight: bold; border: 1px solid rgba(197,160,89,0.2);
         }
+        .activity-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .activity-table th { text-align: left; padding: 15px; color: var(--text-muted); font-size: 13px; border-bottom: 1px solid var(--border-light); }
+        .activity-table td { padding: 15px; font-size: 14px; border-bottom: 1px solid rgba(26,43,60,0.03); }
+        .activity-table tr:last-child td { border-bottom: none; }
+        .badge { padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+        .badge.buy { background: rgba(34, 197, 94, 0.1); color: #16a34a; }
+        .badge.sell { background: rgba(239, 68, 68, 0.1); color: #dc2626; }
     </style>
 </head>
 <body>
@@ -58,19 +65,19 @@
                 <button class="lang-btn active" onclick="setLang('zh')">中</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
             </div>
-            <a href="index.html" class="btn-secondary">退出</a>
+            <a href="/" class="btn-secondary">退出</a>
         </div>
     </nav>
 
     <div class="layout-dashboard">
         <aside class="sidebar">
-            <a href="kzt.html" class="active">
+            <a href="/kzt" class="active">
                 <span style="font-size: 18px;">📊</span> <span data-i18n="nav_console">控制台</span>
             </a>
-            <a href="wallet.html">
+            <a href="/wallet">
                 <span style="font-size: 18px;">💰</span> <span data-i18n="nav_wallet">钱包</span>
             </a>
-            <a href="security.html">
+            <a href="/security">
                 <span style="font-size: 18px;">🔒</span> <span data-i18n="nav_profile">个人中心</span>
             </a>
         </aside>
@@ -96,7 +103,7 @@
                 </div>
             </div>
 
-            <div class="glass-panel">
+            <div class="glass-panel" style="margin-bottom: 40px;">
                 <div class="panel-title" data-i18n="kzt_panel_title">正在跟随的交易员</div>
                 <div class="trader-list">
                     <div class="trader-item">
@@ -130,6 +137,51 @@
                         <div class="trader-status">Running</div>
                     </div>
                 </div>
+            </div>
+
+            <div class="glass-panel">
+                <div class="panel-title">最近跟随信号 (Recent Signals)</div>
+                <table class="activity-table">
+                    <thead>
+                        <tr>
+                            <th>时间 (Time)</th>
+                            <th>交易对 (Pair)</th>
+                            <th>方向 (Side)</th>
+                            <th>价格 (Price)</th>
+                            <th>交易员 (Trader)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="mono-num" style="color: var(--text-muted);">今天 10:42:15</td>
+                            <td style="font-weight: 600;">BTC/USDT</td>
+                            <td><span class="badge buy">买入开多 (Long)</span></td>
+                            <td class="mono-num">$68,240.50</td>
+                            <td>大夫 (Doctor)</td>
+                        </tr>
+                        <tr>
+                            <td class="mono-num" style="color: var(--text-muted);">今天 09:15:22</td>
+                            <td style="font-weight: 600;">ETH/USDT</td>
+                            <td><span class="badge sell">卖出平多 (Close)</span></td>
+                            <td class="mono-num">$3,450.00</td>
+                            <td>熬鹰 (Eagle)</td>
+                        </tr>
+                        <tr>
+                            <td class="mono-num" style="color: var(--text-muted);">昨天 22:30:05</td>
+                            <td style="font-weight: 600;">SOL/USDT</td>
+                            <td><span class="badge buy">买入开多 (Long)</span></td>
+                            <td class="mono-num">$142.80</td>
+                            <td>老恶魔 (Demon)</td>
+                        </tr>
+                        <tr>
+                            <td class="mono-num" style="color: var(--text-muted);">昨天 18:45:11</td>
+                            <td style="font-weight: 600;">BTC/USDT</td>
+                            <td><span class="badge sell">卖出开空 (Short)</span></td>
+                            <td class="mono-num">$69,100.00</td>
+                            <td>大夫 (Doctor)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>

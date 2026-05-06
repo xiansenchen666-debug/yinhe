@@ -18,6 +18,96 @@
             margin: 40px auto; max-width: 600px;
         }
         .link-box span { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--brand-accent); }
+        .invite-grid {
+            max-width: 1180px;
+            margin: 40px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+        .invite-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            backdrop-filter: var(--blur-md);
+        }
+        .invite-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: var(--brand-primary);
+        }
+        .invite-card p, .invite-card li {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 0.96rem;
+        }
+        .invite-card ul {
+            padding-left: 18px;
+        }
+        .commission-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+        .commission-table th, .commission-table td {
+            text-align: left;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.95rem;
+        }
+        .commission-table th {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .commission-table td:last-child {
+            color: var(--brand-accent);
+            font-weight: 700;
+        }
+        .invite-timeline {
+            max-width: 1180px;
+            margin: 28px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+        .timeline-step {
+            background: var(--bg-panel-solid);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 28px;
+        }
+        .timeline-step strong {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(197, 160, 89, 0.12);
+            color: var(--brand-accent);
+            margin-bottom: 16px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .timeline-step h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .timeline-step p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.94rem;
+        }
+        @media (max-width: 960px) {
+            .invite-grid, .invite-timeline {
+                grid-template-columns: 1fr;
+            }
+            .link-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -27,15 +117,15 @@
     <nav>
         <div class="logo">GALAXY QUANT</div>
         <div class="nav-links">
-            <a href="index.html" data-i18n="nav_home">首页</a>
-            <a href="invite.html" class="active" data-i18n="nav_invite">推广返佣</a>
-            <a href="goods.html" data-i18n="nav_goods">商城</a>
-            <a href="tutorial.html" data-i18n="nav_tutorial">使用教程</a>
+            <a href="/" data-i18n="nav_home">首页</a>
+            <a href="/invite" class="active" data-i18n="nav_invite">推广返佣</a>
+            <a href="/goods" data-i18n="nav_goods">商城</a>
+            <a href="/tutorial" data-i18n="nav_tutorial">使用教程</a>
             <div class="lang-switch">
                 <button class="lang-btn active" onclick="setLang('zh')">中</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
             </div>
-            <a href="kzt.html" class="btn-primary" data-i18n="nav_console">控制台</a>
+            <a href="/kzt" class="btn-primary" data-i18n="nav_console" style="padding: 10px 24px; font-size: 0.85rem;">控制台</a>
         </div>
     </nav>
 
@@ -61,6 +151,73 @@
             <div class="glass-panel" style="text-align: center;">
                 <div style="color: var(--text-muted); margin-bottom: 10px;" data-i18n="invite_stat_earned">累计赚取返佣</div>
                 <div style="font-size: 3rem; font-weight: 900; font-family: 'JetBrains Mono'; color: var(--brand-accent);">4,500 U</div>
+            </div>
+        </div>
+
+        <section class="invite-grid">
+            <div class="invite-card">
+                <h3>返佣规则说明</h3>
+                <table class="commission-table">
+                    <thead>
+                        <tr>
+                            <th>等级</th>
+                            <th>有效邀请</th>
+                            <th>返佣比例</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Starter</td>
+                            <td>1 - 9 人</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td>Partner</td>
+                            <td>10 - 29 人</td>
+                            <td>45%</td>
+                        </tr>
+                        <tr>
+                            <td>Elite</td>
+                            <td>30 人以上</td>
+                            <td>60%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="invite-card">
+                <h3>哪些订单计入返佣</h3>
+                <ul>
+                    <li>月付、季付、半年、年度订阅均计入推广业绩。</li>
+                    <li>额外账户席位和续费订单同样参与返佣统计。</li>
+                    <li>返佣按实际到账金额结算，不含退款或撤销订单。</li>
+                    <li>系统每日自动汇总，支持在钱包页查看返佣明细。</li>
+                </ul>
+            </div>
+            <div class="invite-card">
+                <h3>推广建议</h3>
+                <p>建议将邀请链接结合您的社群、朋友圈、频道或客户私聊进行发送。您也可以配合产品介绍页和收益案例页一起转发，转化率会更高。</p>
+                <p style="margin-top: 14px;">如果您需要专属推广素材、落地页或高等级代理政策，可以联系管理员单独配置。</p>
+            </div>
+        </section>
+
+        <div style="max-width: 1180px; margin: 80px auto 0;">
+            <div class="section-label" style="margin-bottom: 24px;">推广流程</div>
+            <div class="invite-timeline">
+                <div class="timeline-step">
+                    <strong>01</strong>
+                    <h4>分享专属链接</h4>
+                    <p>将专属邀请码或链接发送给潜在客户，对方通过您的链接注册后将自动绑定推荐关系。</p>
+                </div>
+                <div class="timeline-step">
+                    <strong>02</strong>
+                    <h4>客户完成购买</h4>
+                    <p>客户订阅套餐、续费时长或开通额外账户后，系统会自动记录订单并归属到您的推广账户。</p>
+                </div>
+                <div class="timeline-step">
+                    <strong>03</strong>
+                    <h4>返佣自动结算</h4>
+                    <p>返佣金额实时累计到钱包，可用于继续购买服务，也可以按平台规则申请提现。</p>
+                </div>
             </div>
         </div>
     </div>
