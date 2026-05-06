@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="tut_title">使用教程</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .tutorial-wrap {
@@ -206,7 +207,7 @@
             </section>
 
             <section class="section-block">
-                <div class="section-label">四步开通流程</div>
+                <div class="section-label" data-aos="fade-right">四步开通流程</div>
                 <div class="guide-cards">
                     <div class="guide-card">
                         <div class="num">01</div>
@@ -232,7 +233,7 @@
             </section>
 
             <section class="section-block">
-                <div class="section-label">交易所 API 指引</div>
+                <div class="section-label" data-aos="fade-right">交易所 API 指引</div>
                 <div class="platform-grid">
                     <div class="platform-card">
                         <h3>币安 Binance</h3>
@@ -271,7 +272,7 @@
             </section>
 
             <section class="section-block">
-                <div class="section-label">参数配置指南</div>
+                <div class="section-label" data-aos="fade-right">参数配置指南</div>
                 <div class="glass-panel">
                     <div class="tutorial-note">
                         <strong>重点说明：</strong> 根据您 `跟单系统配置指南_v2.md` 的内容，我把最核心、最影响收益与风险的参数浓缩成了下表。用户可以先看这里建立完整认知，再进入控制台逐项配置。
@@ -321,7 +322,7 @@
             </section>
 
             <section class="section-block">
-                <div class="section-label">开通前检查清单</div>
+                <div class="section-label" data-aos="fade-right">开通前检查清单</div>
                 <div class="guide-cards" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
                     <div class="guide-card">
                         <h3>账户状态正常</h3>
@@ -365,6 +366,14 @@
             </section>
         </div>
     </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
     <script src="i18n.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="kzt_title">跟单控制台 - 银河量化</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .stats-grid {
@@ -92,21 +93,21 @@
         </aside>
 
         <main class="main-content">
-            <div class="page-header">
+            <div class="page-header" data-aos="fade-down">
                 <h1 class="page-title" data-i18n="kzt_title">跟单控制台</h1>
                 <button class="btn-primary" data-i18n="kzt_btn_add">添加交易所 API</button>
             </div>
 
             <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card" data-aos="zoom-in">
                     <div class="stat-label" data-i18n="kzt_stat_1">累计收益</div>
                     <div class="stat-value green mono-num">+ $12,450.80</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-aos="zoom-in">
                     <div class="stat-label" data-i18n="kzt_stat_2">策略胜率</div>
                     <div class="stat-value mono-num">86.5%</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-aos="zoom-in">
                     <div class="stat-label" data-i18n="kzt_stat_3">运行中策略</div>
                     <div class="stat-value mono-num">3</div>
                 </div>
@@ -195,6 +196,14 @@
         </main>
     </div>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
     <script src="i18n.js"></script>
 </body>
 </html>

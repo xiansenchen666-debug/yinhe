@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="security_title">安全与个人中心</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .sec-item {
@@ -94,7 +95,7 @@
             <a href="/security" class="active"><span style="font-size: 18px;">🔒</span> <span data-i18n="nav_profile">个人中心</span></a>
         </aside>
         <main class="main-content">
-            <div class="page-header">
+            <div class="page-header" data-aos="fade-down">
                 <h1 class="page-title" data-i18n="security_title">安全与个人中心</h1>
             </div>
             <div class="security-grid">
@@ -165,6 +166,14 @@
             </div>
         </main>
     </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
     <script src="i18n.js"></script>
 </body>
 </html>

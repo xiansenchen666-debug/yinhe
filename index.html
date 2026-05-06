@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="hero_title">银河量化智能跟单平台</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         /* 首页特有样式 */
@@ -85,7 +86,7 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero" data-aos="fade-up">
         <h1 data-i18n="hero_title">银河量化智能跟单</h1>
         <h2 data-i18n="hero_subtitle">连接主流交易所 · 零分润 · 高速同步</h2>
         <p data-i18n="hero_desc">一键智能跟单，让高手策略为您稳健盈利，开启数字资产收益新纪元。</p>
@@ -96,32 +97,32 @@
     </section>
 
     <section class="features" id="features">
-        <div class="feature-card">
+        <div class="feature-card" data-aos="fade-up">
             <div class="feature-icon">🛡️</div>
             <h3 data-i18n="feature_1_title">零分润，收益全归您</h3>
             <p data-i18n="feature_1_desc">平台不抽取任何利润，仅收固定服务费，真正让策略回报归属用户。</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" data-aos="fade-up">
             <div class="feature-icon">⚡</div>
             <h3 data-i18n="feature_2_title">超高速跟单引擎</h3>
             <p data-i18n="feature_2_desc">自研信号同步技术，交易员成交至用户成交仅需 0.02 秒。</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" data-aos="fade-up">
             <div class="feature-icon">🌐</div>
             <h3 data-i18n="feature_3_title">主流信号源保障</h3>
             <p data-i18n="feature_3_desc">支持币安、欧易、Bitget、Gate.io 等全球头部交易所实盘数据。</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" data-aos="fade-up">
             <div class="feature-icon">🔒</div>
             <h3 data-i18n="feature_4_title">极高安全性</h3>
             <p data-i18n="feature_4_desc">资金始终保存在您的个人交易所账户中，我们仅需读取和交易权限，无法提现您的资产。</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" data-aos="fade-up">
             <div class="feature-icon">📊</div>
             <h3 data-i18n="feature_5_title">透明的数据分析</h3>
             <p data-i18n="feature_5_desc">每笔交易、历史胜率、盈亏比一目了然。我们为您提供机构级的可视化图表分析工具。</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" data-aos="fade-up">
             <div class="feature-icon">💬</div>
             <h3 data-i18n="feature_6_title">7×24专属客服</h3>
             <p data-i18n="feature_6_desc">专业的技术团队全天候待命，为您解答关于策略、API配置及续费等一切问题。</p>
@@ -129,7 +130,7 @@
     </section>
 
     <!-- 加入统计数据部分 -->
-    <section class="stats-section" style="padding: 80px 5%; background: rgba(255, 255, 255, 0.4); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); margin-bottom: 100px;">
+    <section class="stats-section" data-aos="fade-up" data-aos-delay="200" style="padding: 80px 5%; background: rgba(255, 255, 255, 0.4); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); margin-bottom: 100px;">
         <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px; text-align: center;">
             <div>
                 <div style="font-size: 3.5rem; font-weight: 900; color: var(--brand-primary); font-family: 'JetBrains Mono', monospace;">$50M+</div>
@@ -146,6 +147,14 @@
         </div>
     </section>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
     <script src="i18n.js"></script>
 </body>
 </html>

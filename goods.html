@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="goods_title">VIP 服务商城 | GALAXY QUANT</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         /* 商城专属顶级样式 */
@@ -185,7 +186,7 @@
 
     <div class="main-content">
         
-        <div class="page-header">
+        <div class="page-header" data-aos="fade-down">
             <h1 class="page-title" data-i18n="goods_hero_title">选择您的量化引擎</h1>
             <p class="page-subtitle" data-i18n="goods_hero_desc">零分润，全透明。订阅即可解锁机构级的高频信号与顶尖交易员策略。</p>
         </div>
@@ -193,10 +194,10 @@
         <div class="store-container">
             <!-- 基础订阅区 -->
             <section>
-                <div class="section-label" data-i18n="goods_section_base">基础订阅计划</div>
+                <div class="section-label" data-aos="fade-right" data-i18n="goods_section_base">基础订阅计划</div>
                 <div class="pricing-grid">
                     <!-- 1 Month -->
-                    <div class="price-card">
+                    <div class="price-card" data-aos="fade-up">
                         <div class="card-header">
                             <h3 class="card-title" data-i18n="goods_pkg_1m">月付订阅</h3>
                             <p class="price-desc" data-i18n="goods_pkg_1m_desc">适合初次体验机构级智能跟单的投资者。</p>
@@ -216,7 +217,7 @@
                     </div>
                     
                     <!-- 3 Months -->
-                    <div class="price-card">
+                    <div class="price-card" data-aos="fade-up">
                         <div class="card-header">
                             <h3 class="card-title" data-i18n="goods_pkg_3m">季付订阅</h3>
                             <p class="price-desc" data-i18n="goods_pkg_3m_desc">短周期稳健跟单，享受基础折扣优惠。</p>
@@ -236,7 +237,7 @@
                     </div>
 
                     <!-- 6 Months -->
-                    <div class="price-card">
+                    <div class="price-card" data-aos="fade-up">
                         <div class="card-header">
                             <h3 class="card-title" data-i18n="goods_pkg_6m">半年订阅</h3>
                             <p class="price-desc" data-i18n="goods_pkg_6m_desc">中长线投资者的优选，提供更稳定的回报周期。</p>
@@ -256,7 +257,7 @@
                     </div>
                     
                     <!-- 1 Year -->
-                    <div class="price-card pro">
+                    <div class="price-card pro" data-aos="fade-up">
                         <div class="tag-best">Best Value</div>
                         <div class="card-header">
                             <h3 class="card-title" data-i18n="goods_pkg_1y" style="color: var(--brand-primary);">年度 VIP 旗舰版</h3>
@@ -281,11 +282,11 @@
 
             <!-- 增值与扩展服务区 (续费/开通账户) -->
             <section>
-                <div class="section-label" data-i18n="goods_section_addon" style="color: var(--text-main);">增值与扩展服务</div>
+                <div class="section-label" data-aos="fade-right" data-i18n="goods_section_addon" style="color: var(--text-main);">增值与扩展服务</div>
                 <div class="addon-grid">
                     
                     <!-- 额外账户 -->
-                    <div class="addon-card">
+                    <div class="addon-card" data-aos="fade-up">
                         <div class="addon-info">
                             <h3 class="addon-title" data-i18n="goods_addon_account">开通额外账户席位</h3>
                             <p class="addon-desc" data-i18n="goods_addon_account_desc">突破单一交易所 API 限制。支持同时运行币安、欧易等多平台，或同一平台绑定多个子账户，实现资金分散与策略多开。</p>
@@ -297,7 +298,7 @@
                     </div>
 
                     <!-- 订阅续费 -->
-                    <div class="addon-card">
+                    <div class="addon-card" data-aos="fade-up">
                         <div class="addon-info">
                             <h3 class="addon-title" data-i18n="goods_addon_renew">计划续费与时长充值</h3>
                             <p class="addon-desc" data-i18n="goods_addon_renew_desc">为当前正在运行中的订阅计划无缝延长有效期，避免因过期导致的策略中断。支持按原价补齐差价升级为高级计划。</p>
@@ -311,8 +312,8 @@
             </section>
 
             <!-- 常见问题 -->
-            <section class="faq-section">
-                <div class="section-label">常见问题 FAQ</div>
+            <section class="faq-section" data-aos="fade-up">
+                <div class="section-label" data-aos="fade-right">常见问题 FAQ</div>
                 <div class="glass-panel" style="padding: 20px 40px;">
                     <div class="faq-item">
                         <div class="faq-q">订阅后如何开始跟单？</div>
@@ -331,6 +332,14 @@
         </div>
 
     </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
     <script src="i18n.js"></script>
 </body>
 </html>

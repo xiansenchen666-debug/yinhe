@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="invite_title">推广返佣</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .invite-hero {
@@ -205,7 +206,7 @@
         </section>
 
         <div style="max-width: 1180px; margin: 80px auto 0;">
-            <div class="section-label" style="margin-bottom: 24px;">推广流程</div>
+            <div class="section-label" data-aos="fade-right" style="margin-bottom: 24px;">推广流程</div>
             <div class="invite-timeline">
                 <div class="timeline-step">
                     <strong>01</strong>
@@ -225,6 +226,14 @@
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
     <script src="i18n.js"></script>
 </body>
 </html>
